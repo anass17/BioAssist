@@ -1,0 +1,35 @@
+# FastAPI & web
+fastapi
+uvicorn[standard]
+python-multipart
+
+# Database & ORM
+SQLAlchemy
+psycopg2-binary
+
+# Pydantic
+pydantic[Email]
+pydantic-settings
+
+# Authentication & Security
+python-jose
+passlib[bcrypt]
+
+# PDF Processing
+pdfplumber
+PyPDF2
+
+# LangChain & RAG
+langchain
+openai
+sentence-transformers
+transformers
+
+# Vector Store
+chromadb
+
+# Utilities
+python-dotenv
+
+# Testing
+pytest
