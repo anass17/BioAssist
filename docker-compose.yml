@@ -1,15 +1,44 @@
 version: '3.9'
 
 services:
+
+  postgres:
+    image: postgres:15
+    container_name: bioassist_postgres
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: ${DB_USER}
+      POSTGRES_PASSWORD: ${DB_PASSWORD}
+      POSTGRES_DB: ${DB_NAME}
+    networks:
+      - app-network
+    ports:
+      - "5432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+
+
   fastapi:
     build:
       context: .
       dockerfile: app/Dockerfile
+    container_name: bioassist_fastapi
     ports:
       - "8000:8000"
     env_file:
       - .env
+    networks:
+      - app-network
     volumes:
       - ./app:/app
+
+
+volumes:
+  pgdata:
+
+networks:
+  app-network:
+    driver: bridge
+  
 
   
